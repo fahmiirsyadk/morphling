@@ -1,4 +1,4 @@
-# 🌊 morphling
+# 🌊 morph
 tiny library with full reactivity and immutability
 
 this is just a syntatic sugar of js methods , all wrapped to the pure function.
