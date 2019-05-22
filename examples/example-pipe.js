@@ -22,4 +22,4 @@ const newIds = map(shoplists, list =>
   )(list.id)
 );
 
-console.log(uniq(newIds)); // => [1,7,17]
+console.log(uniq(newIds));
