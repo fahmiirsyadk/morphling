@@ -1,8 +1,7 @@
-const { pipe, join } = require("../index");
+const { pipe, compose, join, uppercase, lowercase, uniq } = require("../index");
 const { tag } = require("../dom");
 
 const map = expression => arr => {
-  console.log(typeof expression);
   return typeof expression == "function"
     ? arr.map(res => expression(res))
     : typeof expression == "string"
@@ -23,3 +22,15 @@ const mapdep = items => pipe(join(""))(map(listGroupItem)(items));
 
 listGroupItem("Cras justo");
 console.log(mapdep(["Cras justo", "Dapibus ac"]));
+
+const shopListen = uniq(
+  map(({ type }) =>
+    compose(
+      uppercase,
+      lowercase,
+      JSON.stringify
+    )(type)
+  )(shoplists)
+);
+
+console.log(shopListen);
