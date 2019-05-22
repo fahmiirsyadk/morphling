@@ -13,13 +13,13 @@ const increment = n => n + 1;
 const double = n => n * 2;
 
 // using pipe
-const newIds = map(shoplists, list =>
+const newIds = map(list =>
   compose(
     square,
     decrement,
     double,
     increment
   )(list.id)
-);
+)(shoplists);
 
 console.log(uniq(newIds)); // => [ 9, 25, 49 ]

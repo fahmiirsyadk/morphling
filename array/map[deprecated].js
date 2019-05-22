@@ -1,4 +1,4 @@
-module.exports = array => arg => {
+module.exports = (array, arg) => {
   return typeof arg == "function"
     ? array.map(res => arg(res))
     : typeof arg == "string"

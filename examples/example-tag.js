@@ -7,7 +7,7 @@ console.log(tag({ tag: "div", attr: { class: "title" } })("this is a title!"));
 
 const listGroup = tag({ tag: "ul", attr: { class: "list-group" } });
 const listGroupItem = tag({ tag: "li", attr: { class: "list-group-item" } });
-const listGroupItems = items => pipe(join(""))(map(items, listGroupItem));
+const listGroupItems = items => pipe(join(""))(map(listGroupItem)(items));
 
 listGroup();
 // <ul class="list-group"></ul>

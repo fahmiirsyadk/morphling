@@ -3,9 +3,8 @@ const { map, pipe, replace, join } = require("../index");
 const encodeAttribute = (x = "") => replace(x)(/"/g, "&quot;");
 const toAttributeString = (x = {}) =>
   pipe(join(" "))(
-    map(
-      Object.keys(x),
-      attr => `${encodeAttribute(attr)}="${encodeAttribute(x[attr])}"`
+    map(attr => `${encodeAttribute(attr)}="${encodeAttribute(x[attr])}"`)(
+      Object.keys(x)
     )
   );
 

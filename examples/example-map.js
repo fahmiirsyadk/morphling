@@ -11,11 +11,13 @@ const shoplists = [
 // square function
 const square = n => n * n;
 
-// map shopLists and show the type key only to new array
-console.log((newShoppingList = map(shoplists, "type")));
+// placeholder => map(expression)(data)
+const types = map("type")(shoplists);
+const coolestTypes = map(list => list.type + " : cool")(shoplists);
+const closureFunc = map(list => square(list.id))(shoplists);
+const filterUniq = uniq(map(list => square(list.id))(shoplists));
 
-// map shopLists with callback it took type value + passed
-console.log((newShoppingList = map(shoplists, list => list.type + " passed")));
-console.log((newShoppingList = map(shoplists, list => square(list.id))));
-
-console.log((newShoppingList = uniq(map(shoplists, list => square(list.id)))));
+console.log(types);
+console.log(coolestTypes);
+console.log(closureFunc);
+console.log(filterUniq);

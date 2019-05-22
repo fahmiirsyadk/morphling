@@ -1,7 +1,8 @@
-module.exports = (array, arg) => {
-  return typeof arg == "function"
-    ? array.map(res => arg(res))
-    : typeof arg == "string"
-    ? array.map(res => res[arg])
-    : array.map(res => res);
+module.exports = expression => arr => {
+  let _ = arr;
+  return typeof expression == "function"
+    ? _.map(res => expression(res))
+    : typeof expression == "string"
+    ? _.map(res => res[expression])
+    : _.map(res => res);
 };

@@ -1,13 +1,13 @@
-const { pipe, compose, join, uppercase, lowercase, uniq } = require("../index");
+const {
+  pipe,
+  compose,
+  join,
+  map,
+  uppercase,
+  lowercase,
+  uniq
+} = require("../index");
 const { tag } = require("../dom");
-
-const map = expression => arr => {
-  return typeof expression == "function"
-    ? arr.map(res => expression(res))
-    : typeof expression == "string"
-    ? arr.map(res => res[expression])
-    : arr.map(res => res);
-};
 
 const listGroupItem = tag({ tag: "li", attr: { class: "list-group-item" } });
 const shoplists = [
@@ -18,7 +18,6 @@ const shoplists = [
 ];
 
 const mapdep = items => pipe(join(""))(map(listGroupItem)(items));
-// const mapdep = items => items.map(listGroupItem).join("");
 
 listGroupItem("Cras justo");
 console.log(mapdep(["Cras justo", "Dapibus ac"]));
