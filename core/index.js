@@ -1,3 +1,4 @@
 const pipe = require("./pipe");
+const compose = require("./compose");
 
-module.exports = { pipe };
+module.exports = { pipe, compose };

@@ -1,5 +1,5 @@
-const { pipe } = require("./core");
+const { pipe, compose } = require("./core");
 const { map, uniq } = require("./array");
 const { uppercase } = require("./string");
 
-module.exports = { pipe, map, uniq, uppercase };
+module.exports = { pipe, compose, map, uniq, uppercase };
