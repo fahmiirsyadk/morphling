@@ -1,0 +1,8 @@
+{
+  "name": "morphling",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/fahmiirsyadk/morphling.git",
+  "author": "fahmi irsyad khairi <fahmiirsyad10@gmail.com>",
+  "license": "MIT"
+}
