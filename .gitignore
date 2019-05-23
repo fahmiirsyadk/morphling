@@ -90,5 +90,5 @@ typings/
 
 # dist
 dist/
-
+test.js
 # End of https://www.gitignore.io/api/node
