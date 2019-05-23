@@ -1,12 +1,12 @@
 # 🌊 morphling
-tiny library with immutability by default
+tiny library it can disallow you using much on method.
 > this is just a syntatic sugar of js methods , all wrapped to the **pure function**.
 
 **“Sometimes, the elegant implementation is just a function. Not a method. Not a class. Not a framework. Just a function.” ~ John Carmack (Id Software, Oculus VR)”**
 
 ## Examples
 
-### 1. Using Map(array) instead Array.map(res => res)
+### Map
 
 ```js
 
@@ -27,14 +27,14 @@ console.log(nameLists) => # ["banana","skate","knife"]
 
 -> using morpling
 
-const nameLists = map(shoplists, "id")
+const nameLists = map("id")(shoplists)
 console.log(nameLists) => # ["banana","skate","knife"]
 ```
 
-### Complex SET
+### Pipe
 ```js
 
-// forms is like pipe in ramda, wrap multiple methods into a single flow
+// pipe is like going run multiple functions into a single flow (left to right)
 
 import { pipe } from 'morphling/core'
 import { map, uniq } from 'morphling/array'
@@ -47,11 +47,41 @@ const shoplists = [
   {id: 3, name: "knife", type: "kitchen-tool"}
 ]
 
-const newObject = map(shoplists, list => pipe(
+const newObject = map(list => pipe(
   uppercase,
   reverse
-)(list.name))
+  )(list.name)
+)(shoplists)
 
 console.log(uniq(newObject)) => # ["ANANAB","ETAKS","EFINK"]
+
+```
+
+### Even helping to create HTML tag ? yes, use { tag }
+```js
+
+import { pipe } from 'morpling/core'
+import { map, join } from 'morpling/array'
+import { tag } from 'morpling/dom'
+
+const listGroup = tag({ tag: "ul", attr: { class: "list-group" } });
+const listGroupItem = tag({ tag: "li", attr: { class: "list-group-item" } });
+const listGroupItems = items => pipe(join(""))(map(listGroupItem)(items));
+
+listGroup();
+// <ul class="list-group"></ul>
+
+listGroupItem("Cras justo");
+// <li class="list-group-item">Cras justo</li>
+
+listGroupItems(["Cras justo", "Dapibus ac"]);
+// <li class='list-group-item'>Cras justo</li>
+// <li class='list-group-item'>Dapibus ac</li>
+
+listGroup(listGroupItems(["Cras justo", "Dapibus ac"]));
+// <ul class='list-group'>
+//   <li class='list-group-item'>Cras justo</li>
+//   <li class='list-group-item'>Dapibus ac</li>
+// </ul>
 
 ```
