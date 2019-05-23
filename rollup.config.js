@@ -51,6 +51,16 @@ export default [
     output: [
       { file: pkg.main, format: "cjs" },
       { file: pkg.module, format: "es" }
+    ],
+    plugins: [
+      terser({
+        compress: {
+          pure_getters: true,
+          unsafe: true,
+          unsafe_comps: true,
+          warnings: false
+        }
+      })
     ]
   }
 ];
