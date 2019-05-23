@@ -10,7 +10,7 @@ tiny library it can disallow you using much on method.
 
 ```js
 
-import { map } from 'morpling/array'
+import { map } from 'morpling'
 
 const shoplists = [
   {id: 1, name: "banana", type: "fruit"},
@@ -36,9 +36,7 @@ console.log(nameLists) => # ["banana","skate","knife"]
 
 // pipe is like going run multiple functions into a single flow (left to right)
 
-import { pipe } from 'morphling/core'
-import { map, uniq } from 'morphling/array'
-import { reverse, uppercase } from 'morpling/string'
+import { pipe, map, uniq, uppercase } from 'morphling'
 
 const shoplists = [
   {id: 1, name: "banana", type: "fruit"},
@@ -47,22 +45,21 @@ const shoplists = [
   {id: 3, name: "knife", type: "kitchen-tool"}
 ]
 
-const newObject = map(list => pipe(
-  uppercase,
-  reverse
-  )(list.name)
+const newObject = pipe(
+  map("name"),
+  map(uppercase),
+  uniq
 )(shoplists)
 
-console.log(uniq(newObject)) => # ["ANANAB","ETAKS","EFINK"]
+console.log(newObject) => # ["ANANAB","ETAKS","EFINK"]
 
 ```
 
 ### Even helping to create HTML tag ? yes, use { tag }
 ```js
 
-import { pipe } from 'morpling/core'
-import { map, join } from 'morpling/array'
-import { tag } from 'morpling/dom'
+import { pipe, map, join } from 'morpling'
+import { tag } from 'morpling-dom'
 
 const listGroup = tag({ tag: "ul", attr: { class: "list-group" } });
 const listGroupItem = tag({ tag: "li", attr: { class: "list-group-item" } });
