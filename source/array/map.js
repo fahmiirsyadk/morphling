@@ -1,4 +1,4 @@
-module.exports = expression => arr => {
+export default expression => arr => {
   let _ = arr;
   return typeof expression == "function"
     ? _.map(res => expression(res))

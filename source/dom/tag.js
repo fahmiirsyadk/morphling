@@ -1,4 +1,4 @@
-const { map, pipe, replace, join } = require("../index");
+import { map, pipe, replace, join } from "../index";
 
 const encodeAttribute = (x = "") => replace(x)(/"/g, "&quot;");
 const toAttributeString = (x = {}) =>
@@ -11,5 +11,5 @@ const toAttributeString = (x = {}) =>
 const tagAttributes = x => c =>
   `<${x.tag}${x.attr ? " " : ""}${toAttributeString(x.attr)}>${c}</${x.tag}>`;
 
-module.exports = x =>
+export default x =>
   typeof x === "string" ? tagAttributes({ tag: x }) : tagAttributes(x);
