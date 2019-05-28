@@ -1,8 +1,8 @@
 export default expression => arr => {
   let _ = arr;
   return typeof expression == "function"
-    ? _.map(res => expression(res))
+    ? _.flatMap(res => expression(res))
     : typeof expression == "string"
-    ? _.map(res => res[expression])
-    : _.map(res => res);
+    ? _.flatMap(res => res[expression])
+    : _.flatMap(res => res);
 };
